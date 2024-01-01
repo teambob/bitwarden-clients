@@ -144,6 +144,9 @@ export class AddEditComponent extends BaseAddEditComponent {
         tabs == null
           ? null
           : tabs.filter((tab) => tab.url != null && tab.url !== "").map((tab) => tab.url);
+      if (this.cipher.login.username == null || this.cipher.login.username === "") {
+        this.cipher.login.username = await this.stateService.getEmail();
+      }
     }
 
     this.setFocus();
