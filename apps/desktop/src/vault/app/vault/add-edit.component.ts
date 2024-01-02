@@ -99,6 +99,11 @@ export class AddEditComponent extends BaseAddEditComponent implements OnChanges,
     ) {
       this.cipher = null;
     }
+    if (!this.editMode) {
+      if (this.cipher.login.username == null || this.cipher.login.username === "") {
+        this.cipher.login.username = await this.stateService.getEmail();
+      }
+    }
     super.load();
   }
 
